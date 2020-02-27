@@ -5,10 +5,6 @@ if(isset($_POST['submit'])){
   $date = $_POST['date'];
   $photographer = $_POST['photographer'];
   $location = $_POST['location'];
-
-  // $document_root = $_SERVER["DOCUMENT_ROOT"];
-  // $currentDir= getcwd();
-  // $uploadDirectory= "/uploads/";
 }
   $servername = "localhost";
   $username = "root";
@@ -20,14 +16,13 @@ if(isset($_POST['submit'])){
 
          // Uploaded image properties
          if(isset($_POST['submit'])){
-         $file = $_FILES['file'];
-         $fileName = $file["name"];
-         $fileType = $file["type"];
-         $fileTempName = $file["tmp_name"];
-         $fileError = $file["error"];
-         $fileSize = $file["size"];
+          $file = $_FILES['file'];
+          $fileName = $file["name"];
+          $fileType = $file["type"];
+          $fileTempName = $file["tmp_name"];
+          $fileError = $file["error"];
+          $fileSize = $file["size"];
 
-      //   if(isset($_POST['submit'])){
            //Extension Grabber
            $path = $_FILES['file']['name'];
            $fileExt = pathinfo($path, PATHINFO_EXTENSION);//Seperating and grabbing only the extension from get_included_files
@@ -184,8 +179,8 @@ if(isset($_POST['submit'])){
         <!-- // Create SQL statements that corresponds with the Photo Name, Date, Location, Photographer
         // SQL statements that grab the values from the database in each column and print it fann_descale_output
         // Places order by SQL statements in the switch cases. Changes the order of the Photos
-        // SQL Statements that print out objects in database including images
-        //SADNESS AND THEN WE HAVE TO FORMAT. SON OF A BITCH -->
+        // SQL Statements that print out objects in database including images -->
+      
       <?php
       $orderQuery= "SELECT * FROM gallery ORDER BY orderGallery ASC";
     if($stm = $conn->prepare($orderQuery)){
