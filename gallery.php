@@ -36,29 +36,29 @@ if(isset($_POST['submit'])){
 
 if ($_FILES['fileUp']['error'] > 0)
 {
-echo 'Problem: ';
+echo "Problem: ";
 switch ($_FILES['fileUp']['error'])
 {
  case 1:
-  echo 'File exceeded upload_max_filesize.';
+  echo "File exceeded upload_max_filesize.";
   break;
  case 2:
-  echo 'File exceeded max_file_size.';
+  echo "File exceeded max_file_size.";
   break;
  case 3:
-  echo 'File only partially uploaded.';
+  echo "File only partially uploaded.";
   break;
  case 4:
-  echo 'No file uploaded.';
+  echo "No file uploaded.";
   break;
  case 6:
-  echo 'Cannot upload file: No temp directory specified.';
+  echo "Cannot upload file: No temp directory specified.";
   break;
  case 7:
-  echo 'Upload failed: Cannot write to disk.';
+  echo "Upload failed: Cannot write to disk.";
   break;
  case 8:
-  echo 'A PHP extension blocked the file upload.';
+  echo "A PHP extension blocked the file upload.";
   break;
  }
  exit;
@@ -87,7 +87,7 @@ $insertSQL = "INSERT INTO Images (titleGallery, dateGallery, locGallery, photogr
 
 if (!move_uploaded_file($_FILES['upfile']['tmp_name'], "uploads/".$_FILES['upfile']['name']))
  {
-echo 'Problem: Could not move file to destination directory.';
+echo "Problem: Could not move file to destination directory.";
 //exit;
 
 }//isset
@@ -111,7 +111,7 @@ $conn->close();
     echo "<p>image name ".nl2br(htmlspecialchars($_FILES['upfile']['name']))."<p>";
    // echo "<img scr=/uploads/$_FILES['upfile']['name'] />"; //breaks
    //echo '<img scr="'. $dir. '/'.nl2br(htmlspecialchars($_FILES['upfile']['name'])).'">')
-    echo '<img scr="uploads/' .$_FILES['upfile']['name']. '"/>'; //breaks?
+    echo "<img scr="uploads/' .$_FILES['upfile']['name']. '"/>"; //breaks?
 
   ?>
   </body>
