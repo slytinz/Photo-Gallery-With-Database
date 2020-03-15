@@ -28,15 +28,11 @@ if(isset($_POST['submit'])){
   $location = $_POST['phlocation'];
 //  $pdir = 'uploads';
 
-
-
-
  // Uploaded image properties
  $file = $_FILES['upfile'];
  $fileName = $_FILES['upfile']['name'];
  $fileType = $file["type"];
  $fileTempName = $file["tmp_name"];
-}
 
  if ($_FILES['upfile']['error'] > 0)
  {
@@ -100,6 +96,7 @@ $setImgOrder = $rowCount+1;
   {
  echo "Problem: Could not move file to destination directory.";
  //exit;
+  }
 
  }//isset
 
@@ -211,12 +208,13 @@ $setImgOrder = $rowCount+1;
         <!-- The sorting dropdown mechanism for photos to be sorted in a certain way -->
          <div>
           <form method="POST">
-            <label for= "order"><b>Sort By:</b></label>
-              <select name="order" id="order" >
-                <option value = "PhotoName" selected>Photo Name</option>
-                <option value = "Date">Date</option>
-                <option value = "Location">Location</option>
-                <option value = "Photographer">Photographer</option>
+            <label for= "orderGallery"><b>Sort By:</b></label>
+              <select name="orderGallery" id="orderGallery" >
+                <option value = "idGallery" selected>Default</option>
+                <option value = "titleGallery">Photo Name</option>
+                <option value = "dateGallery">Date</option>
+                <option value = "locGallery">Location</option>
+                <option value = "photographer">Photographer</option>
               </select>
               <input type="submit" name="SUBMIT" />
           </form>
@@ -228,8 +226,12 @@ $setImgOrder = $rowCount+1;
 
     <div class = "gallery-containter">
       <?php
+      if (!$conn) {
+       die("Connection failed: " . mysqli_connect_error());
+      }
+      echo "Connected successfully";
 
-      $query= "SELECT * FROM gallery ORDER BY orderGallery ASC";
+      $orderQuery= "SELECT * FROM Images ORDER BY orderGallery ASC";
       $stm = mysqli_stmt_init($conn);
       // if(!mysqli_multi_query($stm, $orderQuery)){
       //   echo "SQL SORTING ORDER FAILED!";
